@@ -1,0 +1,22 @@
+{
+  "name": "begun-boilerplate",
+  "version": "0.0.1",
+  "description": "Boilerplate for front-end projects",
+  "main": "index.html",
+  "moduleType": [
+    "amd"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "materialize": "master"
+  }
+}

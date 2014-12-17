@@ -1,0 +1,19 @@
+{
+  "name": "begun-boilerplate",
+  "description": "Boilerplate for a front-end app",
+  "author": "Afif Sohaili",
+  "dependencies": {
+    "grunt": "0.x.x",
+    "grunt-contrib-copy": "0.4.x",
+    "grunt-contrib-cssmin": "0.6.x",
+    "grunt-contrib-uglify": "0.2.x",
+    "grunt-contrib-concat": "^0.5.0",
+    "grunt-contrib-watch": "^0.5.3",
+    "grunt-notify": "^0.4.1"
+  },
+  "engine": "node >= 0.10",
+  "devDependencies": {
+    "grunt-gitinfo": "^0.1.7",
+    "grunt-sass": "^0.17.0"
+  }
+}
