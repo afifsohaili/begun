@@ -11,7 +11,7 @@ project
 |__img
 |__resources
 |   |__scss
-|   |____javascript
+|   |__javascript
 |__Gruntfile.js
 |__package.json
 |__bower.json
