@@ -24,19 +24,19 @@ project
 ### How to use
 
 Prerequisites:
-1. Grunt CLI
-2. Node.js
-3. Bower
+
+1. Bower
+2. NodeJS
+3. Grunt CLI
 
 Steps:
-1. git clone this repo
-2. Install required NodeJS packages
-```npm install```
-3. Install required bower packages
-```bower install```
-4. Watch for any changes in files
-```grunt watch```
-5. Happy editing!
+
+1. Git clone this repo
+2. `npm install` to install required NodeJS packages
+3. `bower install` to install required Bower packages
+4. Initialize with `grunt init`
+5. Watch for any changes in files using `grunt watch`
+6. Happy editing!
 
 `grunt watch` will automatically watch all files under `resources/scss` and `resources/js` for changes
 
