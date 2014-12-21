@@ -13,7 +13,7 @@ module.exports = function(grunt) {
         options: {
           separator: "\n"
         },
-        src: ["resources/scss/imports/*", "resources/scss/*"],
+        src: ["css/materialize.css", "resources/scss/imports/*", "resources/scss/*"],
         dest: "tmp/all.scss",
       },
       js: {
@@ -30,59 +30,33 @@ module.exports = function(grunt) {
     sass: {
       uncompressed: {
         options: {
-          style: "nested",
+          outputStyle: "nested",
           sourcemap: "none"
         },
         files: {
           "css/all.css": "tmp/all.scss",
         }
       },
+      compressed: {
+        options: {
+          outputStyle: "compressed",
+          sourcemap: "none"
+        },
+        files: {
+          "css/all.min.css": "css/all.css",
+        }
+      },
     },
 
-    // uglify: {
-    //   options: {
-    //
-    //   },
-    //   materializeJs: {
-    //     files: {
-    //       "js/materialize.min.js": ["js/materialize.js"]
-    //     }
-    //   },
-    //   mainJs: {
-    //     files: {
-    //       "js/main.min.js": ["resources/javascript/main.js"]
-    //     }
-    //   }
-    // },
-    //
-
-    watch: {
-      js: {
-        files: [
-          "resources/javascript/*.js",
-        ],
-        tasks: [
-          "concat:js",
-          "notify:js"
-        ],
+    uglify: {
+      materializeJs: {
         options: {
-          interrupt: false,
-          spawn: false,
+
         },
+        files: {
+          "js/all.min.js": ["js/all.js"]
+        }
       },
-
-      css: {
-        files: ["resources/scss/**"],
-        tasks: [
-          "concat:scss",
-          "sass:uncompressed",
-          "notify:css"
-        ],
-        options: {
-          interrupt: false,
-          spawn: false,
-        },
-      }
     },
 
     //  Notifications
@@ -117,7 +91,36 @@ module.exports = function(grunt) {
         }
       },
     },
+    watch: {
+      js: {
+        files: [
+        "resources/javascript/**",
+        ],
+        tasks: [
+        "concat:js",
+        "notify:js"
+        ],
+        options: {
+          interrupt: false,
+          spawn: false,
+        },
+      },
+
+      css: {
+        files: ["resources/scss/**"],
+        tasks: [
+          "concat:scss",
+          "sass:uncompressed",
+          "notify:css",
+        ],
+        options: {
+          interrupt: false,
+          spawn: false,
+        },
+      }
+    }
   });
+
 
   // load the tasks
   grunt.loadNpmTasks("grunt-sass");
@@ -132,7 +135,13 @@ module.exports = function(grunt) {
     "copy:materialize",
     "concat:scss",
     "concat:js",
-    "sass:uncompressed",
+    "sass:uncompressed"
   ]);
-  // grunt.registerTask("production", ["copy", "concat:mainCss", "sass", "concat:allJs", "uglify", "concat:allMinJs"]);
+  grunt.registerTask("production", [
+    "copy:materialize",
+    "concat:scss",
+    "concat:js",
+    "sass:compressed",
+    "uglify"
+  ]);
 };
