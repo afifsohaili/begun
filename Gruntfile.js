@@ -3,9 +3,10 @@ module.exports = function(grunt) {
     copy: {
       materialize: {
         expand: true,
-        cwd: "bower_components/materialize/dist",
-        src: ["**"],
-        dest: "./",
+        files: {
+          "./" : "bower_components/materialize/dist/**",
+          "js/jquery.js" : "bower_components/jquery/dist/jquery.min.js"
+        },
       }
     },
     concat: {
@@ -21,6 +22,7 @@ module.exports = function(grunt) {
           separator: ";\n"
         },
         src: [
+          "js/jquery.js",
           "js/materialize.js",
           "resources/javascript/**"
         ],
@@ -43,7 +45,7 @@ module.exports = function(grunt) {
           sourcemap: "none"
         },
         files: {
-          "css/all.min.css": "css/all.css",
+          "css/all.css": "css/all.css",
         }
       },
     },
@@ -54,7 +56,7 @@ module.exports = function(grunt) {
 
         },
         files: {
-          "js/all.min.js": ["js/all.js"]
+          "js/all.js": ["js/all.js"]
         }
       },
     },
@@ -118,6 +120,31 @@ module.exports = function(grunt) {
           spawn: false,
         },
       }
+    },
+    compress: {
+      main: {
+        options: {
+          archive: "production.zip"
+        },
+        files: [
+          {
+            src: ["img/**"],
+            dest: "./"
+          },
+          {
+            src: ["css/all.css"],
+            dest: "./"
+          },
+          {
+            src: ["js/all.js"],
+            dest: "./"
+          },
+          {
+            src: ["index.html"],
+            dest: "./"
+          },
+        ]
+      }
     }
   });
 
@@ -128,6 +155,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-contrib-copy");
   grunt.loadNpmTasks("grunt-contrib-concat");
   grunt.loadNpmTasks("grunt-contrib-uglify");
+  grunt.loadNpmTasks('grunt-contrib-compress');
   grunt.loadNpmTasks("grunt-notify");
 
   // define the tasks
@@ -142,6 +170,7 @@ module.exports = function(grunt) {
     "concat:scss",
     "concat:js",
     "sass:compressed",
-    "uglify"
+    "uglify",
+    "compress"
   ]);
 };

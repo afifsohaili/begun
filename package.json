@@ -13,6 +13,7 @@
   },
   "engine": "node >= 0.10",
   "devDependencies": {
+    "grunt-contrib-compress": "^0.13.0",
     "grunt-gitinfo": "^0.1.7",
     "grunt-sass": "^0.17.0"
   }
