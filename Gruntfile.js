@@ -3,10 +3,32 @@ module.exports = function(grunt) {
     copy: {
       materialize: {
         expand: true,
-        files: {
-          "./" : "bower_components/materialize/dist/**",
-          "js/jquery.js" : "bower_components/jquery/dist/jquery.min.js"
-        },
+        files: [
+          {
+            expand: true,
+            cwd: "bower_components/materialize/dist/font/",
+            src: ["**"],
+            dest: "font/"
+          },
+          {
+            expand: true,
+            cwd: "bower_components/materialize/dist/css/",
+            src: "materialize.css",
+            dest: "css/"
+          },
+          {
+            expand: true,
+            cwd: "bower_components/jquery/dist/",
+            src: "jquery.js",
+            dest: "js/"
+          },
+          {
+            expand: true,
+            cwd: "bower_components/materialize/dist/js/",
+            src: ["materialize.js"],
+            dest: "js/"
+          },
+        ]
       }
     },
     concat: {
@@ -45,7 +67,7 @@ module.exports = function(grunt) {
           sourcemap: "none"
         },
         files: {
-          "css/all.css": "css/all.css",
+          "css/all.css": "tmp/all.scss",
         }
       },
     },
