@@ -17,6 +17,6 @@
   ],
   "dependencies": {},
   "devDependencies": {
-    "materialize": "master"
+    "materialize": "*"
   }
 }
